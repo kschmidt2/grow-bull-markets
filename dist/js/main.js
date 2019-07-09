@@ -16,36 +16,38 @@ document.addEventListener('DOMContentLoaded', function () {
       styledMode: true,
       spacingBottom: 25,
       spacingRight: 100,
-      marginLeft: 32
+      marginLeft: 40
     },
     title: {
       text: null
     },
-    data: {
-      googleSpreadsheetKey: '1BV34R-0-WzaE9J2oqWVIIxpWYyXe7MV6LVSNhg76OvA',
-      googleSpreadsheetWorksheet: 1,
-      endColumn: 2,
-      endRow: 5
-    },
+    series: [{
+      data: [["6/1/1932 – 3/6/1937", 324.5, 57.2], ["4/29/1942 – 5/29/1946", 157.7, 49.0], ["6/14/1949 – 8/2/1956", 266.3, 85.6], ["10/22/1957 – 12/12/1961", 86.4, 49.7], ["6/27/1962 – 2/9/1966", 79.8, 43.5], ["10/7/1966 – 11/29/1968", 48.0, 25.8], ["5/26/1970 – 1/11/1973", 73.5, 31.5], ["10/3/1974 – 11/28/1980", 125.6, 73.9], ["8/12/1982 – 8/25/1987", 228.8, 56.5], ["12/4/1987 – 7/16/1990", 64.8, 31.4], ["10/11/1990 – 3/24/2000", 417.0, 113.5], ["10/9/2002 – 10/9/2007", 101.5, 56.0], ["3/9/2009 – present", 340.4, 124.0]]
+    }],
     plotOptions: {
       series: {
         dataLabels: {
           enabled: true,
           // useHTML: true,  
-          format: '${point.z:,.0f}',
+          format: '{point.z:,.0f}',
           allowOverlap: true,
           verticalAlign: 'top',
-          align: 'left'
+          align: 'center'
         },
-        pointPadding: .02
+        pointPadding: .05
       }
     },
     legend: {
       enabled: false
     },
     xAxis: {
+      title: {
+        text: 'Duration of bull market, in months',
+        align: 'low'
+      },
+      type: 'category',
       labels: {
-        autoRotation: false,
+        enabled: false,
         overflow: 'allow',
         padding: 20,
         style: {
@@ -58,8 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
       labels: {
         useHTML: true,
         overflow: 'allow'
-      },
-      max: 25
+      }
     },
     credits: {
       enabled: false
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     tooltip: {
       shadow: false,
       padding: 10,
-      pointFormat: '<b>Median percentage:</b> {point.y:.1f}%<br>' + '<b>Median down payment:</b> ${point.z}<br>'
+      pointFormat: '<b>Total growth:</b> {point.y:.1f}%<br>' + '<b>Duration:</b> {point.z} months<br>'
     },
     responsive: {
       rules: [{
@@ -165,8 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
             align: 'left',
             x: -18
           },
-          tooltip: {
-            enabled: false
+          tooltip: {// enabled: false
           }
         }
       }]
